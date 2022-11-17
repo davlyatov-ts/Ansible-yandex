@@ -393,19 +393,3 @@ alex@AlexPC:~/GitHub/DevOps/CI/08-ansible-03-yandex$
 ```
 ---
 
-9.  Подготовьте README.md файл по своему playbook. В нём должно быть описано: что делает playbook, какие у него есть параметры и теги.
-
-## **Clickhouse**
-
-<p align="center">
-  <img width="1200" height="500" src="./images/clickhouse.png">
-</p>
-
-## **Lighhouse**
-
-<p align="center">
-  <img width="1200" height="500" src="./images/lighthouse.png">
-</p>
-
-
-10. Готовый playbook выложите в свой репозиторий, поставьте тег `08-ansible-03-yandex` на фиксирующий коммит, в ответ предоставьте ссылку на него.

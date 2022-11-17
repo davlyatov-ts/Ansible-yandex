@@ -115,18 +115,18 @@ tasks:
 clickhouse:
   hosts:
     clickhouse-01:
-      ansible_host: 51.250.104.225
-      ansible_user: lex
+      ansible_host: 158.160.44.156
+      ansible_user: cisco
 lighthouse:
   hosts:
     lighthouse-01:
-      ansible_host: 51.250.31.53
-      ansible_user: lex
+      ansible_host: 158.160.35.217
+      ansible_user: cisco
 vector:
   hosts:
     vector-01:
-      ansible_host: 84.252.138.134      
-      ansible_user: lex
+      ansible_host: 158.160.34.185      
+      ansible_user: cisco
 ```
 ---
 
@@ -134,8 +134,8 @@ vector:
 
 ---
 ```bash
-alex@AlexPC:~/GitHub/DevOps/CI/08-ansible-03-yandex$ ansible-lint site.yml
-alex@AlexPC:~/GitHub/DevOps/CI/08-ansible-03-yandex$
+cisco@ubuntu:~/repo/DevOps/CI/08-ansible-03-yandex$ ansible-lint site.yml
+cisco@ubuntu:~/repo/DevOps/CI/08-ansible-03-yandex$
 ```
 ---
 
@@ -143,7 +143,7 @@ alex@AlexPC:~/GitHub/DevOps/CI/08-ansible-03-yandex$
 
 ---
 ```bash
-alex@AlexPC:~/GitHub/DevOps/CI/08-ansible-03-yandex$ ansible-playbook -i inventory/prod.yml site.yml --check
+cisco@ubuntu:~/repo/DevOps/CI/08-ansible-03-yandex$ ansible-playbook -i inventory/prod.yml site.yml --check
 
 PLAY [Install Nginx] ********************************************************************************************************************************************************************************
 
@@ -210,8 +210,7 @@ PLAY RECAP *********************************************************************
 clickhouse-01              : ok=3    changed=0    unreachable=0    failed=0    skipped=1    rescued=1    ignored=0   
 lighthouse-01              : ok=8    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 vector-01                  : ok=2    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
-
-alex@AlexPC:~/GitHub/DevOps/CI/08-ansible-03-yandex$ 
+ 
 ```
 
 **TASK [Vector | Template Config]** данная таска вызывает ошибку и выполнение крашит выполненипе playbook. Как можно исправить данную ошибку.
@@ -222,7 +221,7 @@ alex@AlexPC:~/GitHub/DevOps/CI/08-ansible-03-yandex$
 
 ---
 ```yml
-alex@AlexPC:~/GitHub/DevOps/CI/08-ansible-03-yandex$ ansible-playbook -i inventory/prod.yml site.yml --diff
+cisco@ubuntu:~/repo/DevOps/CI/08-ansible-03-yandex$ ansible-playbook -i inventory/prod.yml site.yml --diff
 
 PLAY [Install Nginx] ********************************************************************************************************************************************************************************
 
@@ -251,7 +250,7 @@ ok: [lighthouse-01]
 
 TASK [Lighthouse | Create lighthouse vector_config] *************************************************************************************************************************************************
 --- before: /etc/nginx/conf.d/default.conf
-+++ after: /home/alex/.ansible/tmp/ansible-local-2265760hi8j8w6/tmpu4n9cim0/lighthouse.conf.j2
++++ after: /home/cisco/.ansible/tmp/ansible-local-2265760hi8j8w6/tmpu4n9cim0/lighthouse.conf.j2
 @@ -1,6 +1,8 @@
  server {
      listen          80;
@@ -260,7 +259,7 @@ TASK [Lighthouse | Create lighthouse vector_config] ****************************
 +    access_log      /var/log/nginx/lighthouse_access.log main;
  
      location / {
-         root    /home/alex/lighthouse;
+         root    /home/cisco/lighthouse;
 
 changed: [lighthouse-01]
 
@@ -317,7 +316,7 @@ vector-01                  : ok=5    changed=0    unreachable=0    failed=0    s
 
 ---
 ```yml
-alex@AlexPC:~/GitHub/DevOps/CI/08-ansible-03-yandex$ ansible-playbook -i inventory/prod.yml site.yml --diff
+cisco@ubuntu:~/repo/DevOps/CI/08-ansible-03-yandex$ ansible-playbook -i inventory/prod.yml site.yml --diff
 
 PLAY [Install Nginx] ********************************************************************************************************************************************************************************
 

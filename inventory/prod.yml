@@ -3,11 +3,14 @@ clickhouse:
   hosts:
     clickhouse-01:
       ansible_host: 158.160.44.156
+      ansible_user: cisco
 lighthouse:
   hosts:
     lighthouse-01:
       ansible_host: 158.160.35.217
+      ansible_user: cisco
 vector:
   hosts:
     vector-01:
       ansible_host: 158.160.34.185
+      ansible_user: cisco

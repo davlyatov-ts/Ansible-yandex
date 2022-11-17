@@ -1,7 +1,7 @@
 ---
 - name: Install Nginx
   # К каким хостам применяем данный play
-  hosts: lighthouse
+  hosts: lighthouse-01
   handlers:
   # Запускаем Веб-сервер Nginx
     - name: start-nginx
@@ -30,7 +30,7 @@
         mode: 0644
       notify: start-nginx
 - name: Install Lighthouse
-  hosts: lighthouse
+  hosts: lighthouse-01
   handlers:
     - name: reload-nginx
       become: true
@@ -55,7 +55,7 @@
         mode: 0644
       notify: reload-nginx
 - name: Install Clickhouse
-  hosts: clickhouse
+  hosts: clickhouse-01
   handlers:
     - name: Start Clickhouse service
       become: true
@@ -98,7 +98,7 @@
       changed_when: create_db.rc == 0
 
 - name: Vector | Install rpm
-  hosts: vector
+  hosts: vector-01
   tasks:
     - name: Install Vector
       become: true
